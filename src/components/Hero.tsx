@@ -11,7 +11,7 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Transform Your <span className="accent-gradient bg-clip-text text-transparent">Commercial Space</span>
+              Transform Your <span className="text-teal-300">Commercial Space</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
               Premium interior systems and solutions for corporate, institutional, and commercial environments. 

@@ -10,7 +10,6 @@ export default function Portfolio() {
   const images = [
     'b46db38a-271f-48ea-b8d5-9e53d1b63dc9.jpg',
     '332083af-57a7-4ecb-8fbd-5ef0f7eac010.jpg',
-    '83e77e78-11a4-4dc7-9c3b-b8bf1fd967dd.jpg',
     '2e8719ef-6d31-468d-99ae-f77145e2b6da.jpg',
     'e1d8009a-4a10-461a-9a1b-92ec69de4014.jpg',
     'dce911e7-9280-49e6-8344-ace02779e5c3.jpg',

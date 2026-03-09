@@ -29,7 +29,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why Choose <span className="accent-gradient bg-clip-text text-transparent">Westrose</span>
+            Why Choose <span className="text-teal-300">Westrose</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Decades of excellence in commercial interior systems
