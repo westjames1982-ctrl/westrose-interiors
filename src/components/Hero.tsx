@@ -1,16 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
 
 export default function Hero() {
-  const [scrollY, setScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
@@ -27,7 +19,6 @@ export default function Hero() {
           fill
           className="object-cover"
           priority
-          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
         />
 
         {/* Gradient Overlay */}
