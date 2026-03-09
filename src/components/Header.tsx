@@ -25,7 +25,7 @@ export default function Header() {
           />
           <div>
             <h1 className="text-sm md:text-lg font-bold text-slate-900">Westrose Interiors</h1>
-            <p className="text-xs text-teal-600 hidden sm:block">Commercial Interior Systems</p>
+            <p className="text-xs text-teal-600">Commercial Interior Systems</p>
           </div>
         </div>
 
