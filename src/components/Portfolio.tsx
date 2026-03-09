@@ -2,13 +2,11 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import fs from 'fs'
-import path from 'path'
 
 export default function Portfolio() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
-  // Get list of images from public/images
+  // Gallery of project images
   const images = [
     'b46db38a-271f-48ea-b8d5-9e53d1b63dc9.jpg',
     '332083af-57a7-4ecb-8fbd-5ef0f7eac010.jpg',
