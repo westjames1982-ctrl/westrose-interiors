@@ -1,10 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Portfolio() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [autoScroll, setAutoScroll] = useState(true)
 
   // Gallery of project images
   const images = [
@@ -31,69 +32,126 @@ export default function Portfolio() {
     '2f31a232-d545-4d4a-8455-2255aeda6876.jpg',
   ]
 
+  // Auto-scroll carousel
+  useEffect(() => {
+    if (!autoScroll) return
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    }, 4000)
+    
+    return () => clearInterval(interval)
+  }, [autoScroll, images.length])
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index)
+    setAutoScroll(false)
+  }
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length)
+    setAutoScroll(false)
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+    setAutoScroll(false)
+  }
+
   return (
-    <section id="portfolio" className="py-24 bg-slate-50">
+    <section id="portfolio" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Our <span className="text-teal-600">Portfolio</span>
+            Our <span className="text-teal-600">Project Gallery</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Showcase of completed commercial interior projects across Calgary and surrounding areas. 
-            Each project reflects our commitment to excellence and professional execution.
+            Showcase of completed commercial interior projects across Calgary. 
+            Swipe or click to explore our portfolio.
           </p>
         </div>
 
-        <div className="grid-gallery">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="card-shadow rounded-lg overflow-hidden cursor-pointer group"
-              onClick={() => setSelectedImage(`/images/${image}`)}
-            >
-              <div className="relative h-64 overflow-hidden bg-slate-200">
-                <Image
-                  src={`/images/${image}`}
-                  alt={`Project ${index + 1}`}
-                  fill
-                  className="object-cover group-hover:scale-110 transition duration-500"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition flex items-center justify-center">
-                  <span className="text-white opacity-0 group-hover:opacity-100 transition text-lg font-bold">
-                    View
-                  </span>
-                </div>
-              </div>
-              <div className="p-4 bg-white">
-                <p className="text-slate-900 font-semibold">Project {index + 1}</p>
-                <p className="text-sm text-slate-600">Commercial Interior Solution</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Main Carousel */}
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900 mb-8">
+          {/* Current Image */}
+          <div className="relative h-96 md:h-screen max-h-[600px] w-full">
+            <Image
+              src={`/images/${images[currentIndex]}`}
+              alt={`Project ${currentIndex + 1}`}
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40"></div>
 
-        {/* Modal */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            <div className="relative max-w-4xl w-full h-96 md:h-screen">
-              <Image
-                src={selectedImage}
-                alt="Project Detail"
-                fill
-                className="object-contain"
-              />
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-teal-400"
-              >
-                ✕
-              </button>
+            {/* Image Counter */}
+            <div className="absolute top-4 right-4 bg-black bg-opacity-60 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+              {currentIndex + 1} / {images.length}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              onMouseEnter={() => setAutoScroll(false)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-slate-900 p-3 rounded-full transition z-10"
+            >
+              ❮
+            </button>
+            <button
+              onClick={nextSlide}
+              onMouseEnter={() => setAutoScroll(false)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-slate-900 p-3 rounded-full transition z-10"
+            >
+              ❯
+            </button>
+
+            {/* Project Title */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <p className="text-sm font-semibold text-teal-300 mb-2">PROJECT {currentIndex + 1}</p>
+              <p className="text-3xl font-bold">Commercial Interior Solution</p>
             </div>
           </div>
-        )}
+
+          {/* Thumbnail Strip */}
+          <div className="overflow-x-auto bg-slate-100 p-4">
+            <div className="flex gap-3">
+              {images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`flex-shrink-0 relative h-20 w-20 rounded-lg overflow-hidden transition-all ${
+                    currentIndex === index
+                      ? 'ring-4 ring-teal-600 scale-110'
+                      : 'opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <Image
+                    src={`/images/${image}`}
+                    alt={`Thumbnail ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Dots Navigation */}
+        <div className="flex justify-center gap-2 flex-wrap">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`h-3 rounded-full transition ${
+                currentIndex === index
+                  ? 'bg-teal-600 w-8'
+                  : 'bg-slate-300 w-3 hover:bg-slate-400'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
