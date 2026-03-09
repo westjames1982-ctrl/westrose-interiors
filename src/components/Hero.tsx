@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative w-full overflow-hidden pt-16">
       {/* Full-Width Hero Background */}
-      <div className="relative w-full h-screen md:h-[600px] min-h-96">
+      <div className="relative w-full h-80 sm:h-96 md:h-[600px]">
         {/* Background Image */}
         <Image
           src="/images/58021682-1b91-44b1-a95f-e9caedbfc78f.jpg"
@@ -29,33 +29,33 @@ export default function Hero() {
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-4 w-full">
             <div className="max-w-2xl">
-              <div className="mb-6 inline-block">
-                <span className="bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              <div className="mb-4 inline-block">
+                <span className="bg-teal-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                   COMMERCIAL INTERIOR SYSTEMS
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                 Transform Your <span className="text-teal-400">Space</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-slate-200 mb-8 leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base md:text-xl text-slate-200 mb-6 sm:mb-8 leading-relaxed max-w-xl">
                 Premium interior systems and solutions for corporate, institutional, and commercial environments. 
                 Bold design meets professional excellence.
               </p>
               
-              <div className="flex gap-4 flex-wrap">
+              <div className="flex gap-2 sm:gap-4 flex-wrap">
                 <button
                   onClick={scrollToContact}
-                  className="cta-button px-8 py-4 rounded-lg text-white font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition"
+                  className="cta-button px-4 sm:px-8 py-2 sm:py-4 rounded-lg text-white font-bold text-sm sm:text-lg hover:shadow-2xl transform hover:scale-105 transition"
                 >
-                  Get Your Quote
+                  Get Quote
                 </button>
                 <button
                   onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-8 py-4 rounded-lg border-2 border-teal-400 text-teal-400 font-bold hover:bg-teal-400 hover:text-slate-900 transition transform hover:scale-105"
+                  className="px-4 sm:px-8 py-2 sm:py-4 rounded-lg border-2 border-teal-400 text-teal-400 font-bold text-sm sm:text-lg hover:bg-teal-400 hover:text-slate-900 transition transform hover:scale-105"
                 >
-                  View Portfolio
+                  Portfolio
                 </button>
               </div>
             </div>
@@ -72,26 +72,26 @@ export default function Hero() {
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-900 text-white py-16">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-900 text-white py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-4 sm:gap-12">
             <div className="text-center group">
-              <div className="text-5xl md:text-6xl font-bold text-teal-400 mb-3 group-hover:scale-110 transition">
+              <div className="text-2xl sm:text-4xl md:text-6xl font-bold text-teal-400 mb-1 sm:mb-3 group-hover:scale-110 transition">
                 23+
               </div>
-              <p className="text-slate-300 text-lg">Completed Projects</p>
+              <p className="text-slate-300 text-xs sm:text-base md:text-lg">Projects</p>
             </div>
             <div className="text-center group">
-              <div className="text-5xl md:text-6xl font-bold text-teal-400 mb-3 group-hover:scale-110 transition">
+              <div className="text-2xl sm:text-4xl md:text-6xl font-bold text-teal-400 mb-1 sm:mb-3 group-hover:scale-110 transition">
                 23+
               </div>
-              <p className="text-slate-300 text-lg">Years Experience</p>
+              <p className="text-slate-300 text-xs sm:text-base md:text-lg">Years</p>
             </div>
             <div className="text-center group">
-              <div className="text-5xl md:text-6xl font-bold text-teal-400 mb-3 group-hover:scale-110 transition">
+              <div className="text-2xl sm:text-4xl md:text-6xl font-bold text-teal-400 mb-1 sm:mb-3 group-hover:scale-110 transition">
                 100%
               </div>
-              <p className="text-slate-300 text-lg">Client Satisfaction</p>
+              <p className="text-slate-300 text-xs sm:text-base md:text-lg">Satisfied</p>
             </div>
           </div>
         </div>

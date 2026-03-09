@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 w-full bg-white shadow-md z-50">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-1">
           <Image
             src="/logo/westrose-logo.png"
             alt="Westrose Interiors Logo"
@@ -23,9 +23,9 @@ export default function Header() {
             height={50}
             className="rounded"
           />
-          <div className="hidden md:block">
-            <h1 className="text-lg font-bold text-slate-900">Westrose Interiors</h1>
-            <p className="text-xs text-teal-600">Commercial Interior Systems</p>
+          <div>
+            <h1 className="text-sm md:text-lg font-bold text-slate-900">Westrose Interiors</h1>
+            <p className="text-xs text-teal-600 hidden sm:block">Commercial Interior Systems</p>
           </div>
         </div>
 
